@@ -15,7 +15,7 @@ namespace WebAPI_Project.Controllers
         {
             _context = context;
         }
-       
+
         [HttpPost]
         public async Task<IActionResult> CreateProduct(Product product)
         {
@@ -25,5 +25,11 @@ namespace WebAPI_Project.Controllers
 
             return Ok(product);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetProducts()
+        {
+            var products = await _context.Products.ToListAsync();
+            return Ok(products);
+        }   
     }
 }
